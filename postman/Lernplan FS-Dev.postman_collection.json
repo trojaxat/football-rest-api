@@ -1,0 +1,384 @@
+{
+	"info": {
+		"_postman_id": "dcd4f846-d2ce-495b-b989-541c5e5d1e87",
+		"name": "Lernplan FS-Dev",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17563269"
+	},
+	"item": [
+		{
+			"name": "Notes",
+			"item": [
+				{
+					"name": "Create a note",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"body\" : \"Ask about milk\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/notes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"notes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get notes with query",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/notes?body=Ask about milk",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"notes"
+							],
+							"query": [
+								{
+									"key": "body",
+									"value": "Ask about milk"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all notes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/notes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"notes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete note",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/notes/delete?id=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"notes",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Football Team",
+			"item": [
+				{
+					"name": "Create Football Team",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"pm.environment.set(\"footballTeamId\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"TomTester\",\r\n    \"rating\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/footballteam",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"footballteam"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Football Team By Name",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/footballteam?name={{footballTeamName}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"footballteam"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{footballTeamName}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Football Teams",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/footballteam",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"footballteam"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Football Team",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"4c5bbed7-77e6-493e-a536-6f9016179a60\",\r\n    \"name\": \"TomTester der 2.\",\r\n    \"rating\": 7\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/footballteam",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"footballteam"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Football Team By Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/footballteam/{{footballTeamId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"footballteam",
+								"{{footballTeamId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Football Match",
+			"item": [
+				{
+					"name": "Create Football Match",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"pm.environment.set(\"footballMatchId\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"teams\": [],\r\n    \"result\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/footballmatch",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"footballmatch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Football Match By Name",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/footballmatch?footballTeamName={{footballTeamName}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"footballmatch"
+							],
+							"query": [
+								{
+									"key": "footballTeamName",
+									"value": "{{footballTeamName}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Football Matchs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/footballmatch",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"footballmatch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Football Match",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"656ce04f-d6a3-4f01-9987-f32fa616de0a\",\r\n    \"teams\": [\r\n    {\r\n        \"name\": \"Dans dappy dinners\",\r\n        \"rating\": 6,\r\n        \"id\": \"4c5bbed7-77e6-493e-a536-6f9016179a60\"\r\n    },\r\n    {\r\n        \"name\": \"Leos Leopards\",\r\n        \"rating\": 8,\r\n        \"id\": \"a4f8e0ea-5458-4610-90e8-8eba76930e33\"\r\n    }],\r\n    \"result\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/footballmatch",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"footballmatch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Football Match By Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/footballmatch/{{footballTeamId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"footballmatch",
+								"{{footballTeamId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
