@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-
+/**
+ * Football match is the {@link FootballMatchEntity} which is used for each individual match played between two teams
+ */
 @Entity(name="FOOTBALL_MATCHES")
 public class FootballMatchEntity {
     @Id

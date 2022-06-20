@@ -2,6 +2,9 @@ package com.ixto.lernplan_fsdev.api.dto;
 
 import java.util.UUID;
 
+/**
+ * Basic DTO for the {@link NotesDTO}
+ */
 public class NotesDTO {
     private final String body;
     private final UUID id;

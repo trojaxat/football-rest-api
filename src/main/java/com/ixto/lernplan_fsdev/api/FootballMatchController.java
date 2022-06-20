@@ -2,8 +2,8 @@ package com.ixto.lernplan_fsdev.api;
 
 import com.ixto.lernplan_fsdev.api.dto.FootballMatchDTO;
 import com.ixto.lernplan_fsdev.api.dto.FootballMatchReadModel;
-import com.ixto.lernplan_fsdev.domain.persistence.FootballMatchEntity;
 import com.ixto.lernplan_fsdev.api.services.FootballMatchService;
+import com.ixto.lernplan_fsdev.domain.persistence.FootballMatchEntity;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,46 +28,6 @@ public class FootballMatchController {
 
     @Autowired
     FootballMatchService footballMatchEntityService;
-
-    @PostMapping(
-        value = "",
-        produces = APPLICATION_JSON_VALUE
-    )
-    public ResponseEntity<FootballMatchReadModel> createFootballMatchEntity(
-        @RequestBody FootballMatchDTO footballMatchDTO
-    ) {
-        FootballMatchEntity footballMatch = footballMatchEntityService.save(footballMatchDTO);
-        FootballMatchReadModel footballMatchReadable = MAPPER.toReadModel(footballMatch);
-
-        return ResponseEntity.status(HttpStatus.CREATED)
-            .body(footballMatchReadable);
-    }
-
-    @PutMapping(
-        value = "",
-        produces = APPLICATION_JSON_VALUE
-    )
-    public ResponseEntity<FootballMatchReadModel> updateFootballMatchEntity(
-        @RequestBody FootballMatchDTO footballMatchDTO
-    ) {
-        FootballMatchEntity footballMatch = footballMatchEntityService.save(footballMatchDTO);
-        FootballMatchReadModel footballMatchReadable = MAPPER.toReadModel(footballMatch);
-
-        return ResponseEntity
-            .ok()
-            .body(footballMatchReadable);
-    }
-
-    @DeleteMapping(
-        value = "/{id}",
-        produces = APPLICATION_JSON_VALUE
-    )
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteById(
-        @PathVariable UUID id
-    ) {
-        footballMatchEntityService.deleteById(id);
-    }
 
     @GetMapping(
         value = "",
@@ -107,5 +67,45 @@ public class FootballMatchController {
         return ResponseEntity
             .ok()
             .body(footballMatchReadable);
+    }
+
+    @PostMapping(
+        value = "",
+        produces = APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<FootballMatchReadModel> createFootballMatchEntity(
+        @RequestBody FootballMatchDTO footballMatchDTO
+    ) {
+        FootballMatchEntity footballMatch = footballMatchEntityService.save(footballMatchDTO);
+        FootballMatchReadModel footballMatchReadable = MAPPER.toReadModel(footballMatch);
+
+        return ResponseEntity.status(HttpStatus.CREATED)
+            .body(footballMatchReadable);
+    }
+
+    @PutMapping(
+        value = "",
+        produces = APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<FootballMatchReadModel> updateFootballMatchEntity(
+        @RequestBody FootballMatchDTO footballMatchDTO
+    ) {
+        FootballMatchEntity footballMatch = footballMatchEntityService.save(footballMatchDTO);
+        FootballMatchReadModel footballMatchReadable = MAPPER.toReadModel(footballMatch);
+
+        return ResponseEntity
+            .ok()
+            .body(footballMatchReadable);
+    }
+
+    @DeleteMapping(
+        value = "/{id}",
+        produces = APPLICATION_JSON_VALUE
+    )
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteById(
+        @PathVariable UUID id
+    ) {
+        footballMatchEntityService.deleteById(id);
     }
 }

@@ -3,9 +3,8 @@ package com.ixto.lernplan_fsdev.api;
 import com.ixto.lernplan_fsdev.api.dto.FootballTeamCreateModel;
 import com.ixto.lernplan_fsdev.api.dto.FootballTeamReadModel;
 import com.ixto.lernplan_fsdev.api.dto.FootballTeamUpdateModel;
-import com.ixto.lernplan_fsdev.api.dto.Greeting;
-import com.ixto.lernplan_fsdev.domain.persistence.FootballTeamEntity;
 import com.ixto.lernplan_fsdev.api.services.FootballTeamService;
+import com.ixto.lernplan_fsdev.domain.persistence.FootballTeamEntity;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,12 +30,44 @@ public class FootballTeamController {
     @Autowired
     FootballTeamService footballTeamEntityService;
 
-    @GetMapping("/greeting")
-    public Greeting greeting(
-        @RequestParam(value = "name", defaultValue = "World") String name
+    @GetMapping(
+        value = "",
+        produces = APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<List<FootballTeamReadModel>> getFootballTeam(
+        @RequestParam(name = "footballTeamName", required = false)
+        final String footballTeamName
     ) {
-        String greetingTemplate = "Hello, %s!";
-        return new Greeting(UUID.randomUUID(), String.format(greetingTemplate, name));
+        List<FootballTeamEntity> footballTeams;
+
+        if (footballTeamName != null) {
+            footballTeams = footballTeamEntityService.findByName(footballTeamName);
+        } else {
+            footballTeams = footballTeamEntityService.findAll();
+        }
+
+        List<FootballTeamReadModel> footballTeamsReadable = footballTeams.stream()
+            .map(MAPPER::toReadModel)
+            .collect(Collectors.toList());
+
+        return ResponseEntity
+            .ok()
+            .body(footballTeamsReadable);
+    }
+
+    @GetMapping(
+        value = "/{id}",
+        produces = APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<FootballTeamReadModel> getFootballTeam(
+        @PathVariable UUID id
+    ) {
+        FootballTeamEntity footballTeam = footballTeamEntityService.findById(id);
+        FootballTeamReadModel footballTeamsReadable = MAPPER.toReadModel(footballTeam);
+
+        return ResponseEntity
+            .ok()
+            .body(footballTeamsReadable);
     }
 
     @PostMapping(
@@ -77,45 +108,5 @@ public class FootballTeamController {
         @PathVariable UUID id
     ) {
         footballTeamEntityService.deleteById(id);
-    }
-
-    @GetMapping(
-        value = "",
-        produces = APPLICATION_JSON_VALUE
-    )
-    public ResponseEntity<List<FootballTeamReadModel>> getFootballTeam(
-        @RequestParam(name = "footballTeamName", required = false)
-        final String footballTeamName
-    ) {
-        List<FootballTeamEntity> footballTeams;
-
-        if (footballTeamName != null) {
-            footballTeams = footballTeamEntityService.findByName(footballTeamName);
-        } else {
-            footballTeams = footballTeamEntityService.findAll();
-        }
-
-        List<FootballTeamReadModel> footballTeamsReadable = footballTeams.stream()
-            .map(MAPPER::toReadModel)
-            .collect(Collectors.toList());
-
-        return ResponseEntity
-            .ok()
-            .body(footballTeamsReadable);
-    }
-
-    @GetMapping(
-        value = "/{id}",
-        produces = APPLICATION_JSON_VALUE
-    )
-    public ResponseEntity<FootballTeamReadModel> getFootballTeam(
-        @PathVariable UUID id
-    ) {
-        FootballTeamEntity footballTeam = footballTeamEntityService.findById(id);
-        FootballTeamReadModel footballTeamsReadable = MAPPER.toReadModel(footballTeam);
-
-        return ResponseEntity
-            .ok()
-            .body(footballTeamsReadable);
     }
 }

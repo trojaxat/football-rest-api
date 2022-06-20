@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Football team is the {@link FootballTeamEntity} which is used for each individual team
+ */
 @Entity(name="FOOTBALL_TEAMS")
 public class FootballTeamEntity {
     @Id

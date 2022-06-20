@@ -1,7 +1,12 @@
 package com.ixto.lernplan_fsdev.api.dto;
 
+import com.ixto.lernplan_fsdev.domain.persistence.FootballTeamEntity;
+
 import java.util.UUID;
 
+/**
+ * Basic DTO example for the {@link FootballTeamEntity}
+ */
 public class FootballTeamDTO {
     private final UUID id;
     private final String name;

@@ -2,6 +2,9 @@ package com.ixto.lernplan_fsdev.api.dto;
 
 import java.util.UUID;
 
+/**
+ * Basic class for the {@link Greeting}
+ */
 public class Greeting {
 
     private final UUID id;

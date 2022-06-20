@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.UUID;
 
+/**
+ * Notes is the {@link NotesEntity} used for simple information tracking
+ */
 @Entity(name="NOTES")
 public class NotesEntity {
     @Id

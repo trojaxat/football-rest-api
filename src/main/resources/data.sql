@@ -1,3 +1,4 @@
+-- Basic teams added --
 INSERT INTO football_teams (
     id,
     name,
@@ -10,7 +11,7 @@ INSERT INTO football_teams (
      ('dd819cae03c64818bb9ff8337022be6b', 'Simons Sassy Simps', 5),
      ('c1087bafedc54d95aeec1166b1b82954', 'Quangs Team', 7);
 
-
+-- Basic note added --
 INSERT INTO notes (
     id,
     body

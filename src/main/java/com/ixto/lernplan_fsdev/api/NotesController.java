@@ -1,8 +1,8 @@
 package com.ixto.lernplan_fsdev.api;
 
 import com.ixto.lernplan_fsdev.api.dto.NotesDTO;
-import com.ixto.lernplan_fsdev.domain.persistence.NotesEntity;
 import com.ixto.lernplan_fsdev.api.services.NotesService;
+import com.ixto.lernplan_fsdev.domain.persistence.NotesEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -38,17 +38,6 @@ public class NotesController {
         }
     }
 
-    @PostMapping(
-        value = "/notes",
-        produces = MediaType.APPLICATION_JSON_VALUE
-    )
-    public ResponseEntity<NotesEntity> createNote(
-        @RequestBody NotesDTO notesDTO
-    ) {
-        return ResponseEntity.ok()
-            .body(noteService.save(notesDTO));
-    }
-
     @GetMapping(
         value = "/notes/{id}",
         produces = MediaType.APPLICATION_JSON_VALUE
@@ -60,6 +49,17 @@ public class NotesController {
 
         return ResponseEntity.ok()
             .body(note);
+    }
+
+    @PostMapping(
+        value = "/notes",
+        produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<NotesEntity> createNote(
+        @RequestBody NotesDTO notesDTO
+    ) {
+        return ResponseEntity.ok()
+            .body(noteService.save(notesDTO));
     }
 
     @DeleteMapping(

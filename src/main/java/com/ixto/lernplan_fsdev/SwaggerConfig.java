@@ -17,36 +17,23 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-//@Configuration
-//@EnableSwagger2
-//public class SwaggerConfig {
-//
-//  @Bean
-//  public Docket api() {
-//    return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.any())
-//        .paths(PathSelectors.any()).build();
-//  }
-//
-//}
 
 @Configuration
 @EnableSwagger2
 @ConfigurationProperties("app.api")
-@ConditionalOnProperty(name="app.api.swagger.enable", havingValue = "true", matchIfMissing = false)
+@ConditionalOnProperty(
+    name="app.api.swagger.enable",
+    havingValue = "true",
+    matchIfMissing = false
+)
 public class SwaggerConfig {
 
- private String version;
-
+  private String version;
   private String title;
-
   private String description;
-
   private String basePackage;
-
   private String contactName;
-
   private String contactEmail;
-
 
   @Bean
   public Docket api() {

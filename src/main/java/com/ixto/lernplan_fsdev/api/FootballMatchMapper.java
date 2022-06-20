@@ -5,6 +5,7 @@ import com.ixto.lernplan_fsdev.domain.persistence.FootballMatchEntity;
 import org.mapstruct.Mapper;
 
 /**
+ * The mapper relating to {@link FootballMatchEntity}
  * @author <a href="mailto:daxford@ixto.de">Daniel Axford</a>
  */
 @Mapper

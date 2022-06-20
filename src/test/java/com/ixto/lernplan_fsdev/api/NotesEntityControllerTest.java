@@ -1,7 +1,7 @@
 package com.ixto.lernplan_fsdev.api;
 
-import com.ixto.lernplan_fsdev.domain.persistence.NotesEntity;
 import com.ixto.lernplan_fsdev.api.services.NotesService;
+import com.ixto.lernplan_fsdev.domain.persistence.NotesEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
