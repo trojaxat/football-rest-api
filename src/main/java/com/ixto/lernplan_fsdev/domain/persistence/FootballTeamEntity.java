@@ -1,5 +1,7 @@
 package com.ixto.lernplan_fsdev.domain.persistence;
 
+import lombok.Builder;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
@@ -10,6 +12,7 @@ import java.util.UUID;
  * Football team is the {@link FootballTeamEntity} which is used for each individual team
  */
 @Entity(name="FOOTBALL_TEAMS")
+@Builder
 public class FootballTeamEntity {
     @Id
     private UUID id;
@@ -20,6 +23,7 @@ public class FootballTeamEntity {
     @Column(name = "rating")
     private Integer rating;
 
+    @Builder.Default
     @ManyToMany(mappedBy="teams", fetch= FetchType.EAGER, cascade = CascadeType.ALL)
     @Size(max=2)
     private List<FootballMatchEntity> matches = new ArrayList<>();

@@ -24,9 +24,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/notes",
+							"raw": "{{urlBE}}/notes",
 							"host": [
-								"{{url}}"
+								"{{urlBE}}"
 							],
 							"path": [
 								"notes"
@@ -41,9 +41,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/notes?body=Ask about milk",
+							"raw": "{{urlBE}}/notes?body=Ask about milk",
 							"host": [
-								"{{url}}"
+								"{{urlBE}}"
 							],
 							"path": [
 								"notes"
@@ -64,9 +64,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/notes",
+							"raw": "{{urlBE}}/notes",
 							"host": [
-								"{{url}}"
+								"{{urlBE}}"
 							],
 							"path": [
 								"notes"
@@ -81,9 +81,9 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/notes/delete?id=1",
+							"raw": "{{urlBE}}/api/notes/delete?id=1",
 							"host": [
-								"{{url}}"
+								"{{urlBE}}"
 							],
 							"path": [
 								"api",
@@ -132,9 +132,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/footballteam",
+							"raw": "{{urlBE}}/footballteam",
 							"host": [
-								"{{url}}"
+								"{{urlBE}}"
 							],
 							"path": [
 								"footballteam"
@@ -161,9 +161,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/footballteam?name={{footballTeamName}}",
+							"raw": "{{urlBE}}/footballteam?name={{footballTeamName}}",
 							"host": [
-								"{{url}}"
+								"{{urlBE}}"
 							],
 							"path": [
 								"footballteam"
@@ -184,9 +184,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/footballteam",
+							"raw": "{{urlBE}}/footballteam",
 							"host": [
-								"{{url}}"
+								"{{urlBE}}"
 							],
 							"path": [
 								"footballteam"
@@ -202,7 +202,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": \"4c5bbed7-77e6-493e-a536-6f9016179a60\",\r\n    \"name\": \"TomTester der 2.\",\r\n    \"rating\": 7\r\n}",
+							"raw": "{\r\n    \"id\": \"{{footballTeamId}}\",\r\n    \"name\": \"TomTester der 2.\",\r\n    \"rating\": 7\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -210,12 +210,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/footballteam",
+							"raw": "{{urlBE}}/footballteam/{{footballTeamId}}",
 							"host": [
-								"{{url}}"
+								"{{urlBE}}"
 							],
 							"path": [
-								"footballteam"
+								"footballteam",
+								"{{footballTeamId}}"
 							]
 						}
 					},
@@ -227,9 +228,9 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/footballteam/{{footballTeamId}}",
+							"raw": "{{urlBE}}/footballteam/{{footballTeamId}}",
 							"host": [
-								"{{url}}"
+								"{{urlBE}}"
 							],
 							"path": [
 								"footballteam",
@@ -271,9 +272,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/footballmatch",
+							"raw": "{{urlBE}}/footballmatch",
 							"host": [
-								"{{url}}"
+								"{{urlBE}}"
 							],
 							"path": [
 								"footballmatch"
@@ -300,9 +301,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/footballmatch?footballTeamName={{footballTeamName}}",
+							"raw": "{{urlBE}}/footballmatch?footballTeamName={{footballTeamName}}",
 							"host": [
-								"{{url}}"
+								"{{urlBE}}"
 							],
 							"path": [
 								"footballmatch"
@@ -323,9 +324,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/footballmatch",
+							"raw": "{{urlBE}}/footballmatch",
 							"host": [
-								"{{url}}"
+								"{{urlBE}}"
 							],
 							"path": [
 								"footballmatch"
@@ -341,7 +342,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": \"656ce04f-d6a3-4f01-9987-f32fa616de0a\",\r\n    \"teams\": [\r\n    {\r\n        \"name\": \"Dans dappy dinners\",\r\n        \"rating\": 6,\r\n        \"id\": \"4c5bbed7-77e6-493e-a536-6f9016179a60\"\r\n    },\r\n    {\r\n        \"name\": \"Leos Leopards\",\r\n        \"rating\": 8,\r\n        \"id\": \"a4f8e0ea-5458-4610-90e8-8eba76930e33\"\r\n    }],\r\n    \"result\": \"\"\r\n}",
+							"raw": "{\r\n    \"id\": \"{{footballMatchId}}\",\r\n    \"teams\": [\r\n    {\r\n        \"name\": \"Dans dappy dinners\",\r\n        \"rating\": 6,\r\n        \"id\": \"4c5bbed7-77e6-493e-a536-6f9016179a60\"\r\n    },\r\n    {\r\n        \"name\": \"Leos Leopards\",\r\n        \"rating\": 8,\r\n        \"id\": \"a4f8e0ea-5458-4610-90e8-8eba76930e33\"\r\n    }],\r\n    \"result\": \"\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -349,12 +350,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/footballmatch",
+							"raw": "{{urlBE}}/footballmatch/{{footballMatchId}}",
 							"host": [
-								"{{url}}"
+								"{{urlBE}}"
 							],
 							"path": [
-								"footballmatch"
+								"footballmatch",
+								"{{footballMatchId}}"
 							]
 						}
 					},
@@ -366,13 +368,301 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/footballmatch/{{footballTeamId}}",
+							"raw": "{{urlBE}}/footballmatch/{{footballTeamId}}",
 							"host": [
-								"{{url}}"
+								"{{urlBE}}"
 							],
 							"path": [
 								"footballmatch",
 								"{{footballTeamId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Football Player",
+			"item": [
+				{
+					"name": "Create Football Player",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"pm.environment.set(\"footballPlayerId\", jsonData.id);\r",
+									"pm.environment.set(\"footballPlayerName\", jsonData.name);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Tom Tester\",\r\n    \"rating\": 5,\r\n    \"teamId\": \"4c5bbed7-77e6-493e-a536-6f9016179a60\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlMicro}}/footballplayer",
+							"host": [
+								"{{urlMicro}}"
+							],
+							"path": [
+								"footballplayer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Football Players For Team",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"createForAllTeams\": true,\r\n    \"amountOfPlayersPerTeam\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlMicro}}/footballplayer/generic",
+							"host": [
+								"{{urlMicro}}"
+							],
+							"path": [
+								"footballplayer",
+								"generic"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Football Player By Name",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlMicro}}/footballplayer?footballPlayerName={{footballPlayerName}}",
+							"host": [
+								"{{urlMicro}}"
+							],
+							"path": [
+								"footballplayer"
+							],
+							"query": [
+								{
+									"key": "footballPlayerName",
+									"value": "{{footballPlayerName}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Football Players",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlMicro}}/footballplayer",
+							"host": [
+								"{{urlMicro}}"
+							],
+							"path": [
+								"footballplayer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Football Player",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"{{footballPlayerId}}\",\r\n    \"name\": \"Tom Tester\",\r\n    \"rating\": 6,\r\n    \"teamId\": \"4c5bbed7-77e6-493e-a536-6f9016179a60\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlMicro}}/footballplayer/{{footballPlayerId}}",
+							"host": [
+								"{{urlMicro}}"
+							],
+							"path": [
+								"footballplayer",
+								"{{footballPlayerId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Football Player By Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{urlMicro}}/footballplayer/{{footballPlayerId}}",
+							"host": [
+								"{{urlMicro}}"
+							],
+							"path": [
+								"footballplayer",
+								"{{footballPlayerId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Football Result",
+			"item": [
+				{
+					"name": "Create Football Result from Match",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"pm.environment.set(\"footballPlayerId\", jsonData.id);\r",
+									"pm.environment.set(\"footballPlayerName\", jsonData.name);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": \"348a1c25-f8c6-41d4-a8c2-75311c641f23\",\r\n        \"teams\": [\r\n            {\r\n                \"name\": \"Dans dappy dinners\",\r\n                \"rating\": 6,\r\n                \"id\": \"4c5bbed7-77e6-493e-a536-6f9016179a60\"\r\n            },\r\n            {\r\n                \"name\": \"Leos Leopards\",\r\n                \"rating\": 8,\r\n                \"id\": \"a4f8e0ea-5458-4610-90e8-8eba76930e33\"\r\n            }\r\n        ],\r\n        \"result\": \"\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlMicro}}/footballresult",
+							"host": [
+								"{{urlMicro}}"
+							],
+							"path": [
+								"footballresult"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Football Result",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlMicro}}/footballresult",
+							"host": [
+								"{{urlMicro}}"
+							],
+							"path": [
+								"footballresult"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Football Result By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlMicro}}/footballresult/{{footballResultId}}",
+							"host": [
+								"{{urlMicro}}"
+							],
+							"path": [
+								"footballresult",
+								"{{footballResultId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Football Result By Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{urlMicro}}/footballresult/{{footballResultId}}",
+							"host": [
+								"{{urlMicro}}"
+							],
+							"path": [
+								"footballresult",
+								"{{footballResultId}}"
 							]
 						}
 					},

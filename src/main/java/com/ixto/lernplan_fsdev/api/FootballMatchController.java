@@ -1,7 +1,9 @@
 package com.ixto.lernplan_fsdev.api;
 
+import com.ixto.lernplan_fsdev.api.dto.FootballMatchCreateModel;
 import com.ixto.lernplan_fsdev.api.dto.FootballMatchDTO;
 import com.ixto.lernplan_fsdev.api.dto.FootballMatchReadModel;
+import com.ixto.lernplan_fsdev.api.dto.FootballMatchUpdateModel;
 import com.ixto.lernplan_fsdev.api.services.FootballMatchService;
 import com.ixto.lernplan_fsdev.domain.persistence.FootballMatchEntity;
 import org.mapstruct.factory.Mappers;
@@ -19,6 +21,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 /**
  * Rest controller for a simple database transfer object style with service layer and sub entities
  */
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/footballmatch")
 public class FootballMatchController {
@@ -74,9 +77,10 @@ public class FootballMatchController {
         produces = APPLICATION_JSON_VALUE
     )
     public ResponseEntity<FootballMatchReadModel> createFootballMatchEntity(
-        @RequestBody FootballMatchDTO footballMatchDTO
+        @RequestBody FootballMatchCreateModel footballMatchCreateModel
     ) {
-        FootballMatchEntity footballMatch = footballMatchEntityService.save(footballMatchDTO);
+        FootballMatchDTO footballMatchDomain = MAPPER.toDomain(footballMatchCreateModel);
+        FootballMatchEntity footballMatch = footballMatchEntityService.save(footballMatchDomain);
         FootballMatchReadModel footballMatchReadable = MAPPER.toReadModel(footballMatch);
 
         return ResponseEntity.status(HttpStatus.CREATED)
@@ -84,13 +88,15 @@ public class FootballMatchController {
     }
 
     @PutMapping(
-        value = "",
+        value = "/{id}",
         produces = APPLICATION_JSON_VALUE
     )
     public ResponseEntity<FootballMatchReadModel> updateFootballMatchEntity(
-        @RequestBody FootballMatchDTO footballMatchDTO
+        @PathVariable UUID id,
+        @RequestBody FootballMatchUpdateModel footballMatchUpdateModel
     ) {
-        FootballMatchEntity footballMatch = footballMatchEntityService.save(footballMatchDTO);
+        FootballMatchDTO footballMatchDomain = MAPPER.toDomain(footballMatchUpdateModel);
+        FootballMatchEntity footballMatch = footballMatchEntityService.save(footballMatchDomain);
         FootballMatchReadModel footballMatchReadable = MAPPER.toReadModel(footballMatch);
 
         return ResponseEntity

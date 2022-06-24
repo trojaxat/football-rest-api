@@ -20,6 +20,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 /**
  * Rest controller demonstrating a more complicated separation of user input to database layer with map struct
  */
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/footballteam")
 public class FootballTeamController {
@@ -47,7 +48,7 @@ public class FootballTeamController {
         }
 
         List<FootballTeamReadModel> footballTeamsReadable = footballTeams.stream()
-            .map(MAPPER::toReadModel)
+            .map(MAPPER::toEntity)
             .collect(Collectors.toList());
 
         return ResponseEntity
@@ -63,7 +64,7 @@ public class FootballTeamController {
         @PathVariable UUID id
     ) {
         FootballTeamEntity footballTeam = footballTeamEntityService.findById(id);
-        FootballTeamReadModel footballTeamsReadable = MAPPER.toReadModel(footballTeam);
+        FootballTeamReadModel footballTeamsReadable = MAPPER.toEntity(footballTeam);
 
         return ResponseEntity
             .ok()
@@ -78,21 +79,22 @@ public class FootballTeamController {
         @RequestBody FootballTeamCreateModel footballTeamCreateModel
     ) {
         FootballTeamEntity footballTeam = footballTeamEntityService.save(footballTeamCreateModel);
-        FootballTeamReadModel footballTeamReadable = MAPPER.toReadModel(footballTeam);
+        FootballTeamReadModel footballTeamReadable = MAPPER.toEntity(footballTeam);
 
         return ResponseEntity.status(HttpStatus.CREATED)
             .body(footballTeamReadable);
     }
 
     @PutMapping(
-        value = "",
+        value = "/{id}",
         produces = APPLICATION_JSON_VALUE
     )
     public ResponseEntity<FootballTeamReadModel> updateFootballTeamEntity(
+        @PathVariable UUID id,
         @RequestBody FootballTeamUpdateModel footballTeamUpdateModel
     ) {
         FootballTeamEntity footballTeam = footballTeamEntityService.save(footballTeamUpdateModel);
-        FootballTeamReadModel footballTeamReadable = MAPPER.toReadModel(footballTeam);
+        FootballTeamReadModel footballTeamReadable = MAPPER.toEntity(footballTeam);
 
         return ResponseEntity
             .ok()

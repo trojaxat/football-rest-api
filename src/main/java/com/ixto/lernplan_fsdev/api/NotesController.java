@@ -15,6 +15,7 @@ import java.util.UUID;
 /**
  * Rest controller demonstrating a simple database transfer object style with service layer
  */
+@CrossOrigin
 @RestController
 public class NotesController {
 
