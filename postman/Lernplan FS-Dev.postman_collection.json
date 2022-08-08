@@ -161,7 +161,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{urlBE}}/footballteam?name={{footballTeamName}}",
+							"raw": "{{urlBE}}/footballteam?footballTeamNameme={{footballTeamName}}",
 							"host": [
 								"{{urlBE}}"
 							],
@@ -170,7 +170,7 @@
 							],
 							"query": [
 								{
-									"key": "name",
+									"key": "footballTeamNameme",
 									"value": "{{footballTeamName}}"
 								}
 							]
@@ -264,7 +264,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"teams\": [],\r\n    \"result\": \"\"\r\n}",
+							"raw": "{\r\n    \"teams\": [\r\n    {\r\n        \"name\": \"Dans dappy dinners\",\r\n        \"rating\": 6,\r\n        \"id\": \"{{footballTeamId}}\"\r\n    },\r\n    {\r\n        \"name\": \"Leos Leopards\",\r\n        \"rating\": 8,\r\n        \"id\": \"{{footballTeamId2}}\"\r\n    }],\r\n    \"result\": \"\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -566,6 +566,45 @@
 			"item": [
 				{
 					"name": "Create Football Result from Match",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"pm.environment.set(\"footballPlayerId\", jsonData.id);\r",
+									"pm.environment.set(\"footballPlayerName\", jsonData.name);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"348a1c25-f8c6-41d4-a8c2-75311c641f23\",\r\n    \"teams\": [\r\n        {\r\n            \"name\": \"Dans dappy dinners\",\r\n            \"rating\": 6,\r\n            \"id\": \"4c5bbed7-77e6-493e-a536-6f9016179a60\"\r\n        },\r\n        {\r\n            \"name\": \"Leos Leopards\",\r\n            \"rating\": 8,\r\n            \"id\": \"a4f8e0ea-5458-4610-90e8-8eba76930e33\"\r\n        }\r\n    ],\r\n    \"result\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlMicro}}/footballresult",
+							"host": [
+								"{{urlMicro}}"
+							],
+							"path": [
+								"footballresult"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Football Result from Match Copy",
 					"event": [
 						{
 							"listen": "test",
